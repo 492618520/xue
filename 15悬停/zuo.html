@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="div"></div>
+<script>
+    function qq(obj) {
+        console.log(obj)
+        function css(name,value){
+
+            var Obj=obj.substring(1,obj.length);
+            console.log(Obj)
+            document.getElementsByClassName(Obj)[0].style[name]=value
+        }
+        return {css:css}
+    }
+    qq(".div").css("width","100px");
+</script>
+</body>
+</html>

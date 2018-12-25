@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div id="one" class="img">hello word!</div>
+<p>s</p>
+</body>
+<script type="text/javascript">
+    function Base(){
+        this.element=[];
+        //获取ID
+        this.getId=function(id){
+            this.element.push(document.getElementById(id));
+            return this
+        };
+        //获取className
+        this.getClass=function(name){
+            var names=document.getElementsByClassName(name);
+            for( var i=0;i<names.length;i++){
+                this.element.push(names[i])
+            }
+            return this;
+        };
+        //获取标签
+        this.getTag=function(tags){
+            var tags=document.getElementsByTagName(tags);
+            for(var i=0;i<tags.length;i++){
+                this.element.push(tags[i])
+            }
+            return this;
+        };
+    }
+    //通过原型添加方法：
+    Base.prototype.css=function(attr,value){
+        //遍历选取当前元素
+        for(var i=0;i<this.element.length;i++){
+            this.element[i].style[attr]=value;
+        }
+        return this;
+    };
+
+
+    var newBase= new Base();
+    newBase.getClass("img").css("background","red").css("color","blue").css("fontSize","60");
+    newBase.getTag("p").css("background","red").css("color","blue").css("fontSize","60");
+</script>
+</html>
